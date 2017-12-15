@@ -16,5 +16,5 @@ setup(
           "Programming Language :: Python :: 3",
           "Topic :: Software Development :: Libraries :: Python Modules",
           "License :: OSI Approved :: MIT License"],
-    install_requires=['requests>=2.18.0']
+    install_requires=['requests', 'python-dateutil']
 )

@@ -1,3 +1,1 @@
-"""
- :Creation date: 13/12/17
-"""
+from pytaboola.client import TaboolaClient
