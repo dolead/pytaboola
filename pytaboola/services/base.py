@@ -38,7 +38,7 @@ class AccountScopedService(BaseService):
 class CrudService(AccountScopedService):
 
     def list(self):
-        return self.execute('GET', self.build_uri())
+        return self.execute('GET', self.build_uri())['results']
 
     def get(self, element_id):
         return self.execute('GET', self.build_uri(element_id))
