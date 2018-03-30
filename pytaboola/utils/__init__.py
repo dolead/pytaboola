@@ -31,7 +31,7 @@ def __cast(item):
         return item
     new_item = item.copy()
     for key, value in item.items():
-        if key in DATE_FIELDS:
+        if key in DATE_FIELDS and value:
             new_item[key] = __cast_as_date(value)
         elif isinstance(value, dict):
             new_item[key] = __cast(value)
