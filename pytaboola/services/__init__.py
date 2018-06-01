@@ -1,4 +1,7 @@
-from pytaboola.services.service import CampaignService, AccountService
+from pytaboola.services.service import (
+        CampaignService,
+        AccountService, CampaignItemService
+)
 from pytaboola.services.report import (
         CampaignSummaryReport, RecirculationSummaryReport,
         TopCampaignContentReport, RevenueSummaryReport, VisitValueReport

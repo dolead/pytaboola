@@ -4,6 +4,7 @@ import requests
 
 from pytaboola.errors import Unauthorized
 from pytaboola.utils import parse_response
+from services import AccountService
 
 logger = logging.getLogger(__name__)
 
@@ -46,7 +47,6 @@ class TaboolaClient:
         logger.debug('Response is %s', result)
         self.access_token = result.get('access_token')
 
-
     def __authenticate_refresh(self):
         if not (self.refresh_token and self.client_secret):
             return
@@ -66,7 +66,6 @@ class TaboolaClient:
 
         logger.debug('Response is %s', result)
         self.access_token = result.get('access_token')
-
 
     def refresh(self):
         if self.refresh_token:
@@ -108,3 +107,4 @@ class TaboolaClient:
             self.refresh()
             return self.execute(method, uri, query_params=query_params,
                                 raw=raw, allow_refresh=False, **payload)
+
