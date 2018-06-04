@@ -17,6 +17,7 @@ setup(
     maintainer_email="it@dolead.com",
     description='Python client for Taboola API',
     long_description=long_description,
+    long_description_content_type='text/markdown',
     classifiers=[
           "Programming Language :: Python :: 3",
           "Topic :: Software Development :: Libraries :: Python Modules",
