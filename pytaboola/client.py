@@ -4,7 +4,6 @@ import requests
 
 from pytaboola.errors import Unauthorized
 from pytaboola.utils import parse_response
-from services import AccountService
 
 logger = logging.getLogger(__name__)
 
