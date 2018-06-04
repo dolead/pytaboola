@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='pytaboola',
-    version='0.1.2',
+    version='0.1.0',
     packages=['pytaboola', 'pytaboola.utils', 'pytaboola.services'],
     url='https://github.com/dolead/pytaboola',
     keywords='taboola api',
