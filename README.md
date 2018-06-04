@@ -1,6 +1,6 @@
 # pytaboola
 Python client for Taboola API (https://github.com/taboola/Backstage-API).
-Before any use of this client, you must have gotten your API client ID and client secret from yout Taboola account manager.
+Before any use of this client, you must have gotten your API client ID and client secret from your Taboola account manager.
 
 Client ID is required for any usage.
 
@@ -62,10 +62,10 @@ service.list()
 ### Campaign CRUD
 
 Simple CRUD service implementing listing, access, creation, edition.
-All requests are scoped by an account. So, it is impossible to list campaigns cross accounts.
+All requests are scoped by account. So, it is impossible to list campaigns cross accounts.
 
 
-Service is instatiated as follow.
+Service is instanciated as follow.
 ```python
 CLIENT_ID = 'XXXXX'
 CLIENT_SECRET = 'YYYYY'
@@ -91,21 +91,21 @@ service.get('my-campaign-id')
 ```
 service.get('my-campaign-id', **attrs)
 ```
-Please note that update is partial. To delete a field, you will have to set it at None explicitely (if this attribute is nullable obviously).
+Please note that update is partial. To delete a field, you will have to set it at None explicitly (if this attribute is nullable obviously).
 
 ##### Create a campaign :
 ```
 service.create(**attrs)
 ```
 
-In these last example, ```attrs``` is a dict containing attributes of the campaign.
-For more informations on campaign attributes, please see the Backstage API documentation at
+In these last examples, ```attrs``` is a dict containing attributes of the campaign.
+For more information on campaign attributes, please see the Backstage API documentation at
 https://github.com/taboola/Backstage-API/blob/master/Backstage%20API%20-%20Campaigns.pdf
 
 
 ### Campaign Item CRUD
-As Campaign CRUD service, this is a simple CRUD services implementing listing, access, creation, edition. 
-All requests are scoped by a campaign.
+As with Campaign CRUD service, this is a simple CRUD service implementing listing, access, creation, edition. 
+All requests are scoped by campaign.
 
 ```python
 CLIENT_ID = 'XXXXX'
@@ -118,7 +118,7 @@ service.list()
 ```
 
 #### Methods
-Base CRUD methods are the same as the campaign service, with the same signature.
+Basic CRUD methods have the same signature as the ones of the campaign service.
 
 ##### List all RSS Children for this campaign :
 ```
@@ -134,17 +134,17 @@ service.child('my-child-id')
 ```
 service.child('my-child-id', **attrs)
 ```
-For more informations on campaign item attributes and what are RSS Childs, please see the Backstage API documentation at
+For more information on campaign item attributes and what RSS Children are, please see the Backstage API documentation at
 https://github.com/taboola/Backstage-API/blob/master/Backstage%20API%20-%20Campaign%20Items.pdf
 
 ### Reports
 
-All report service have an only fetch method, which signature is :
+All report services have only a fetch method, with the following signature :
 
 ```python
 def fetch(self, dimension, start_date, end_date, **filters)
 ```
-where dimension is the aggregation view of the report, start_date and end_date are the period to fetch the report on,
+where dimension is the aggregation view of the report, start_date and end_date delimitate the period to fetch the report on,
  and filters are ways to narrow down your report data.
 
 For more information, please refer to the Backstage API documentation :
@@ -160,8 +160,8 @@ Available services are :
 
 ## Todo:
 ### Resource services
-Resource services are available in this client, but every endpoint are not available.
-Also, it should have a proper documentation.
+Resource services are available in this client, but not all endpoints are available.
+Also, they are not properly documented.
 
 ### Testing
 There is not much intelligence in this wrapper,
@@ -169,8 +169,8 @@ but all utility functions (such as response parsing) and authentication /
 refresh workflow should be tested to avoid regressions.
 
 ### Data validators
-As for now, all data validation is delegated to the Taboola API. It may be usefull to had a small bit of data type checking before any call.
+As for now, all data validation is delegated to the Taboola API. It may be useful to had a small bit of data type checking before any call.
 
 ### Authentication
-user/password authentication method is not implemented. It should be useless in any production environement,
-but may be use as a fast POC/testing authentication system.
+user/password authentication method is not implemented. It should be useless in any production environment,
+but may be used as a fast POC/testing authentication system.
