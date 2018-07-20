@@ -46,9 +46,9 @@ class ReportService(AccountScopedService):
             raise NotImplementedError('ReportService must be subclassed')
         if dimension not in self.allowed_dimensions:
             raise ValueError('Dimension %s is not allowed for %s. '
-                             'Must be one of %s', dimension,
+                             'Must be one of %s' % (dimension,
                              self.__class__.__name__,
-                             self.allowed_dimensions)
+                             self.allowed_dimensions))
 
         real_filters = self.__prepare_filters(start_date, end_date, **filters)
 
@@ -72,29 +72,29 @@ class CampaignSummaryReport(ReportService):
 class TopCampaignContentReport(ReportService):
     report_name = 'top-campaign-content'
 
-    __allowed_dimensions = ('item_breakdown', )
+    allowed_dimensions = ('item_breakdown', )
 
-    __allowed_filters = ('campaign', )
+    allowed_filters = ('campaign', )
 
 
 class RevenueSummaryReport(ReportService):
     report_name = 'revenue-summary'
 
-    __allowed_dimensions = (
+    allowed_dimensions = (
             'day', 'week', 'month', 'page_type_breakdown',
             'placement_breakdown', 'site_breakdown', 'country_breakdown',
             'platform_breakdown', 'day_site_placement_breakdown',
-            'day_site_placement_country_placement_breakdown',
+            'day_site_placement_country_platform_breakdown',
             'day_site_page_type_country_platform_breakdown',
     )
 
-    __allowed_filters = ('page_type', 'placement', 'country', 'platform')
+    allowed_filters = ('page_type', 'placement', 'country', 'platform')
 
 
 class VisitValueReport(ReportService):
     report_name = 'visit-value'
 
-    __allowed_dimensions = (
+    allowed_dimensions = (
             'day', 'week', 'month', 'by_referral', 'landing_page_breakdown',
             'platform_breakdown', 'country_breakdown', 'page_type_breakdown',
             'day_referral_landing_page_breakdown', 'by_source_medium',
@@ -102,7 +102,7 @@ class VisitValueReport(ReportService):
             'by_referral_and_tracking_code',
     )
 
-    __allowed_filters = (
+    allowed_filters = (
             'referral_domain', 'landing_page', 'country',
             'platform', 'campaign_source', 'campaign_medium',
             'campaign_term', 'campaign_content', 'campaign_name',
@@ -113,12 +113,12 @@ class VisitValueReport(ReportService):
 class RecirculationSummaryReport(ReportService):
     report_name = 'recirc-summary'
 
-    __allowed_dimensions = (
+    allowed_dimensions = (
             'day', 'week', 'month', 'page_type_breakdown',
             'placement_breakdown', 'site_breakdown', 'country_breakdown',
             'platform_breakdown', 'day_site_placement_breakdown',
     )
 
-    __allowed_filters = (
+    allowed_filters = (
             'page_type', 'placement', 'country', 'platform',
     )

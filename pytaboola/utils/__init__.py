@@ -52,7 +52,11 @@ def parse_response(response):
             else:
                 error = response.text
         elif 'application/json' in response.headers['Content-Type']:
-            error = response.json().get('errors')
+            json_response = response.json()
+            if 'errors' in json_response:
+                error = json_response.get('errors')
+            else:
+                error = json_response.get('message')
 
         raise ERROR_MAPPING.get(response.status_code, TaboolaError)(error,
                                                                     response)
