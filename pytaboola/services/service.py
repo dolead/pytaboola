@@ -34,8 +34,8 @@ class CampaignItemService(CrudService):
 
     def build_uri(self, endpoint=None):
         base_endpoint = '{}/{}/campaigns/{}/items/'.format(self.endpoint,
-                                                           self.campaign_id,
-                                                           self.account_id)
+                                                           self.account_id,
+                                                           self.campaign_id)
         if not endpoint:
             return base_endpoint
         while endpoint.startswith('/'):
