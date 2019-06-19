@@ -4,7 +4,7 @@ from pytaboola.services.base import CrudService, BaseService
 logger = logging.getLogger(__name__)
 
 
-class AdvertiserService(services.base.BaseService):
+class AdvertiserService(BaseService):
     '''
     Only return advertisers under a container to handle
     situations where account permissions overlap or
