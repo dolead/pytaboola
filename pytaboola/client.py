@@ -16,13 +16,19 @@ class TaboolaClient:
     base_url = 'https://backstage.taboola.com'
 
     def __init__(self, client_id, client_secret=None,
-                 access_token=None, refresh_token=None):
+                 access_token=None, refresh_token=None,
+                 timeout=None):
+        """
+        timeout (in seconds) will be passed to requests.request().
+        If timeout is not set, then default to None. Which will wait forever.
+        """
 
         assert client_secret or access_token, "Must provide either the client secret or an access token"
         self.access_token = access_token
         self.refresh_token = refresh_token
         self.client_id = client_id
         self.client_secret = client_secret
+        self.timeout = timeout
 
         if not self.access_token:
             self.refresh()
@@ -98,7 +104,8 @@ class TaboolaClient:
                 data = payload if raw else json.dumps(payload)
             result = requests.request(method, url, data=data,
                                       params=query_params,
-                                      headers=headers)
+                                      headers=headers,
+                                      timeout=self.timeout)
             return parse_response(result)
         except Unauthorized:
             if not allow_refresh:
