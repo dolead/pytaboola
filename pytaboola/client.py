@@ -2,6 +2,7 @@ import json
 import logging
 import requests
 import tenacity
+from requests.exceptions import ReadTimeout, ConnectTimeout
 
 from pytaboola.errors import Unauthorized
 from pytaboola.utils import parse_response
