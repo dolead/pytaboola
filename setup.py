@@ -1,9 +1,5 @@
 from setuptools import setup
 
-
-with open("README.md", "r") as fh:
-    long_description = fh.read()
-
 setup(
     name='pytaboola',
     version='0.1.3',
@@ -16,8 +12,6 @@ setup(
     maintainer="Dolead",
     maintainer_email="it@dolead.com",
     description='Python client for Taboola API',
-    long_description=long_description,
-    long_description_content_type='text/markdown',
     classifiers=[
           "Programming Language :: Python :: 3",
           "Topic :: Software Development :: Libraries :: Python Modules",

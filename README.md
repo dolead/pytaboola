@@ -34,7 +34,7 @@ Here is a quick description of the services provided by this client.
 
 ### Account listing
 A service with only one method, allowing to list advertiser accounts linked to your main Taboola account.
-This service is read-only. 
+This service is read-only.
 
 ```python
 CLIENT_ID = 'XXXXX'
@@ -104,7 +104,7 @@ https://github.com/taboola/Backstage-API/blob/master/Backstage%20API%20-%20Campa
 
 
 ### Campaign Item CRUD
-As with Campaign CRUD service, this is a simple CRUD service implementing listing, access, creation, edition. 
+As with Campaign CRUD service, this is a simple CRUD service implementing listing, access, creation, edition.
 All requests are scoped by campaign.
 
 ```python
