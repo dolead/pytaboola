@@ -1,6 +1,8 @@
 import json
 import logging
 import requests
+import tenacity
+from requests.exceptions import ReadTimeout, ConnectTimeout
 
 from pytaboola.errors import Unauthorized
 from pytaboola.utils import parse_response
@@ -90,6 +92,12 @@ class TaboolaClient:
     def token_details(self):
         return self.execute('GET', 'backstage/api/1.0/token-details/')
 
+    @tenacity.retry(
+        stop=tenacity.stop_after_attempt(6),
+        wait=tenacity.wait_exponential(multiplier=1, exp_base=2),
+        retry=tenacity.retry_if_exception_type((ReadTimeout, ConnectTimeout)),
+        before_sleep=tenacity.before_sleep_log(logger, logging.INFO),
+    )
     def execute(self, method, uri, query_params=None,
                 allow_refresh=True, raw=False, authenticated=True,
                 **payload):
