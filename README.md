@@ -89,7 +89,7 @@ service.get('my-campaign-id')
 
 ##### Update a campaign :
 ```
-service.get('my-campaign-id', **attrs)
+service.update('my-campaign-id', **attrs)
 ```
 Please note that update is partial. To delete a field, you will have to set it at None explicitly (if this attribute is nullable obviously).
 
