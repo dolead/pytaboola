@@ -4,6 +4,24 @@ from pytaboola.services.base import CrudService, BaseService
 logger = logging.getLogger(__name__)
 
 
+class AdvertiserService(BaseService):
+    '''
+    Only return advertisers under a container to handle
+    situations where account permissions overlap or
+    are shared across multiple users.
+    '''
+
+    def __init__(self, client, container_id):
+        super().__init__(client)
+        self.container_id = container_id
+
+    def build_uri(self, endpoint=None):
+        return '{}/{}/advertisers'.format(self.endpoint, self.container_id)
+
+    def list(self):
+        return self.execute('GET', self.build_uri())
+
+
 class AccountService(BaseService):
     endpoint = '{}/{}'.format(BaseService.endpoint,
                               'users/current/allowed-accounts/')
