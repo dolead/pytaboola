@@ -1,6 +1,11 @@
-class TaboolaError(BaseException):
+class TaboolaError(Exception):
     """
     Base error class for handling Taboola backstage API errors
+
+    Inherits Exception, not BaseException: an API error is an
+    ordinary failure callers are meant to catch, and deriving it
+    from BaseException made it slip through every `except
+    Exception` -- taking the process down instead of the call.
     """
 
     def __init__(self, error, response):

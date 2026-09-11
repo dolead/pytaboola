@@ -71,6 +71,24 @@ def test_error_mapping_covers_the_documented_statuses():
     }
 
 
+def test_errors_are_ordinary_exceptions():
+    assert issubclass(TaboolaError, Exception)
+    for error_class in ERROR_MAPPING.values():
+        assert issubclass(error_class, Exception)
+
+
+def test_errors_are_caught_by_a_bare_except_exception():
+    def failing_call():
+        parse_response(make_response(400, json_data={"message": "nope"}))
+
+    try:
+        failing_call()
+    except Exception as error:  # noqa: B902  -- the point of the test
+        assert isinstance(error, BadRequest)
+    else:
+        raise AssertionError("BadRequest escaped `except Exception`")
+
+
 # parse_response
 
 
