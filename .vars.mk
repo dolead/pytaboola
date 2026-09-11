@@ -5,10 +5,10 @@
 # Source code path(s) for style linters (isort, black, flake8,
 # pycodestyle, pylint). A directory (mypackage/), several paths
 # (mypackage tests) or a single file (mymodule.py).
-CODE = pytaboola
+CODE = pytaboola tests.py
 
 # Path(s) for type checking with mypy. Defaults to CODE if unset.
-# TYPE_CODE = pytaboola
+TYPE_CODE = pytaboola
 
 # Test command. Defaults to `poetry run pytest` if unset.
 # TEST_CMD = poetry run pytest tests/
