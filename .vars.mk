@@ -26,4 +26,4 @@ TAG_PREFIX =
 # <url>`. The URL is deliberately not written down here: this repo
 # is public.
 # Leave empty ONLY for packages meant to be public on pypi.org.
-PUBLISH_REPOSITORY =
+PUBLISH_REPOSITORY = dolead
