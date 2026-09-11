@@ -1,11 +1,15 @@
 import re
-import json
 from datetime import date, datetime
 
 import dateutil.parser
 
-from pytaboola.errors import (BadRequest, Unauthorized,
-                              TaboolaError, ServerError, NotFound)
+from pytaboola.errors import (
+    BadRequest,
+    NotFound,
+    ServerError,
+    TaboolaError,
+    Unauthorized,
+)
 
 ERROR_MAPPING = {
     400: BadRequest,
@@ -15,8 +19,8 @@ ERROR_MAPPING = {
 }
 
 DATE_FIELDS = (
-    'start_date',
-    'end_date',
+    "start_date",
+    "end_date",
 )
 
 
@@ -43,23 +47,26 @@ def __cast(item):
 def parse_response(response):
     if not response.ok:
         error = response.text
-        if 'application/xml' in response.headers['Content-Type']:
+        if "application/xml" in response.headers["Content-Type"]:
             error = re.search(
-                '<error_description>(.*)</error_description>',
-                error, re.IGNORECASE)
+                "<error_description>(.*)</error_description>",
+                error,
+                re.IGNORECASE,
+            )
             if error:
                 error = error.group(1)
             else:
                 error = response.text
-        elif 'application/json' in response.headers['Content-Type']:
+        elif "application/json" in response.headers["Content-Type"]:
             json_response = response.json()
-            if 'errors' in json_response:
-                error = json_response.get('errors')
+            if "errors" in json_response:
+                error = json_response.get("errors")
             else:
-                error = json_response.get('message')
+                error = json_response.get("message")
 
-        raise ERROR_MAPPING.get(response.status_code, TaboolaError)(error,
-                                                                    response)
+        raise ERROR_MAPPING.get(response.status_code, TaboolaError)(
+            error, response
+        )
     return __cast(response.json())
 
 
