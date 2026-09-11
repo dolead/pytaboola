@@ -1,6 +1,6 @@
 [project]
 name = "pytaboola"
-version = "0.1.3"
+version = "0.1.4"
 description = "Python client for Taboola API"
 authors = [{name = "Antoine Francais", email = "antoine.francais@gmail.com"}]
 maintainers = [{name = "Dolead", email = "it@dolead.com"}]
